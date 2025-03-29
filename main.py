@@ -276,8 +276,9 @@ def initialize_browser():
     try:
         browser = uc.Chrome(
             options=options,
-            version_main=115,
-            driver_path="/usr/local/bin/chromedriver"
+            service=service,
+            use_subprocess=True,
+            version_main=115
         )
         browser.set_window_size(1024, 768)
 
