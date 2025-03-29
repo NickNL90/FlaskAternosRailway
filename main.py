@@ -16,6 +16,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, NoSuchElementException, StaleElementReferenceException
 from selenium.webdriver import ActionChains
+from selenium.webdriver.chrome.service import Service
 
 import os
 import contextlib
@@ -274,6 +275,7 @@ def initialize_browser():
     options.add_argument("--disable-component-extensions-with-background-pages")
  
     try:
+        service = Service("/usr/local/bin/chromedriver")
         browser = uc.Chrome(
             options=options,
             service=service,
