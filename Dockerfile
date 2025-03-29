@@ -18,6 +18,9 @@ RUN apt-get update && apt-get install -y \
     libgdk-pixbuf2.0-0 \
     libnspr4 \
     libnss3 \
+    libxss1 \
+    libgtk-3-0 \
+    libgbm1 \
     libx11-xcb1 \
     libxcomposite1 \
     libxdamage1 \
@@ -31,6 +34,8 @@ RUN apt-get update && apt-get install -y \
 RUN curl -L "https://www.dropbox.com/scl/fi/dm14bbnjtrswffpocrpn0/chrome-linux64.zip?rlkey=xyozt2gjhqkhcep29pmktuuhd&st=8m4jw88j&dl=1" -o chrome.zip \
     && unzip chrome.zip -d /opt/ \
     && ln -s /opt/chrome-linux64/chrome /usr/bin/google-chrome \
+    && chmod +x /opt/chrome-linux64/chrome \
+    && /usr/bin/google-chrome --version \
     && rm chrome.zip
 
 # Download Chromedriver 115 via Dropbox direct link

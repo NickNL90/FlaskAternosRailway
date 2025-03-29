@@ -231,6 +231,7 @@ def initialize_browser():
     debug_print("➡️ Browser initialisatie...")
     PROXY = os.getenv("CHROME_PROXY")  # Formaat: "ip:port"
     options = uc.ChromeOptions()
+    options.binary_location = "/usr/bin/google-chrome"
     if PROXY:
         debug_print(f"🌐 Proxy ingesteld: {PROXY}")
         options.add_argument(f'--proxy-server=http://{PROXY}')
@@ -240,8 +241,7 @@ def initialize_browser():
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--incognito")
-    options.headless = True
-    options.binary_location = "/usr/bin/google-chrome"
+    # Removed options.headless = True and duplicate options.binary_location assignment
     options.add_argument("--headless=new")  # of "--headless=new"
     options.add_argument("--no-zygote")
     options.add_argument("--disable-software-rasterizer")
