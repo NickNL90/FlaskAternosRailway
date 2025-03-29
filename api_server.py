@@ -1,3 +1,5 @@
+import eventlet; eventlet.monkey_patch()
+
 from flask import Flask, render_template, request
 from flask import send_from_directory
 from flask_socketio import SocketIO
@@ -7,15 +9,7 @@ import time
 import os
 import sys
 import re
-import ssl
-from OpenSSL import crypto
-import sys
-import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'Aternos')))
-import eventlet
-eventlet.monkey_patch()
-
-import subprocess
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
