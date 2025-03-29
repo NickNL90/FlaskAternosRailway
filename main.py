@@ -277,9 +277,9 @@ def initialize_browser():
     try:
         browser = uc.Chrome(
             options=options,
-            version_main=115,
-            driver_executable_path="/usr/local/bin/chromedriver"
+            version_main=115
         )
+        browser.service.path = "/usr/local/bin/chromedriver"
         browser.set_window_size(1024, 768)
         # Extra anti-bot spoofing via CDP
         browser.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
