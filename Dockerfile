@@ -26,13 +26,15 @@ RUN apt-get update && apt-get install -y \
     --no-install-recommends \
  && rm -rf /var/lib/apt/lists/*
 
-# Download en installeer Chrome 115 en Chromedriver via OneDrive links
-RUN curl -L -o chrome.zip "https://1drv.ms/u/s!AnBCUG_fnhKVl6QCP8N1YYOtFE1Mvw?e=unk0WJ" \
+
+# Download Chrome 115 via Dropbox direct link
+RUN curl -L "https://www.dropbox.com/scl/fi/dm14bbnjtrswffpocrpn0/chrome-linux64.zip?rlkey=xyozt2gjhqkhcep29pmktuuhd&st=8m4jw88j&dl=1" -o chrome.zip \
     && unzip chrome.zip -d /opt/ \
     && ln -s /opt/chrome-linux64/chrome /usr/bin/google-chrome \
     && rm chrome.zip
 
-RUN curl -L -o chromedriver.zip "https://1drv.ms/u/s!AnBCUG_fnhKVl6QBSDSb3HQiSxi6pg?e=ZxjIBW" \
+# Download Chromedriver 115 via Dropbox direct link
+RUN curl -L "https://www.dropbox.com/scl/fi/wlubmfu89oec6qj2a59aq/chromedriver-linux64.zip?rlkey=8693aus3c9efd4d443vf4jp85&st=l6q52fsy&dl=1" -o chromedriver.zip \
     && unzip chromedriver.zip -d /opt/ \
     && mv /opt/chromedriver-linux64/chromedriver /usr/local/bin/chromedriver \
     && chmod +x /usr/local/bin/chromedriver \
