@@ -247,7 +247,6 @@ def initialize_browser():
     options.add_argument("--disable-software-rasterizer")
     options.add_argument("--disable-setuid-sandbox")
     options.add_argument("--disable-gpu")
-    options.page_load_strategy = 'none'
     options.add_argument("--mute-audio")
     options.add_argument("--disable-audio-output")
     options.add_argument("--use-fake-ui-for-media-stream")
@@ -275,14 +274,10 @@ def initialize_browser():
     options.add_argument("--disable-component-extensions-with-background-pages")
  
     try:
-        from selenium.webdriver.chrome.service import Service
-        service = Service("/usr/local/bin/chromedriver")
-
         browser = uc.Chrome(
             options=options,
-            browser_executable_path="/usr/bin/google-chrome",
-            service=service,
-            use_subprocess=True
+            version_main=115,
+            driver_executable_path="/usr/local/bin/chromedriver"
         )
         browser.set_window_size(1024, 768)
 
