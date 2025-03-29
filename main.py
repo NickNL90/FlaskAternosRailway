@@ -16,7 +16,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, NoSuchElementException, StaleElementReferenceException
 from selenium.webdriver import ActionChains
-from selenium.webdriver.chrome.service import Service
 
 import os
 import contextlib
@@ -276,7 +275,7 @@ def initialize_browser():
     options.add_argument("--disable-component-extensions-with-background-pages")
  
     try:
-        
+        from selenium.webdriver.chrome.service import Service
         service = Service("/usr/local/bin/chromedriver")
 
         browser = uc.Chrome(
@@ -284,8 +283,9 @@ def initialize_browser():
             browser_executable_path="/usr/bin/google-chrome",
             service=service,
             use_subprocess=True
-)
+        )
         browser.set_window_size(1024, 768)
+
         # Extra anti-bot spoofing via CDP
         browser.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
             "source": '''
