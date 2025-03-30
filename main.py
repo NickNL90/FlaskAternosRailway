@@ -22,6 +22,11 @@ import os
 import contextlib
 import subprocess
 
+
+from dotenv import load_dotenv
+# Laad omgevingsvariabelen uit .env-bestand
+load_dotenv()
+
 COOKIES_FILE = "cookies.pkl"
 LOGIN_URL = "https://aternos.org/go/"
 SERVER_URL = "https://aternos.org/servers/"
